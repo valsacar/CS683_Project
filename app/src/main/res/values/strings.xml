@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">Activity Lifecycle</string>
+    <string name="app_name">Math and Slash</string>
+    <string name="char_button">View Character</string>
+    <string name="shop_button">Shop</string>
+    <string name="fight_button">Fight</string>
+    <string name="help_button">Help</string>
+    <string name="char_str">Strength: </string>
+    <string name="char_tough">Toughness: </string>
+    <string name="char_health">Health: </string>
+    <string name="char_hp">HP: </string>
+    <string name="char_xp">XP: </string>
+    <string name="char_lvl">LVL: </string>
+    <string name="char_remain">Remaining Points: </string>
+    <string name="char_button_save">Save</string>
+    <string name="char_button_close">Close</string>
 </resources>
