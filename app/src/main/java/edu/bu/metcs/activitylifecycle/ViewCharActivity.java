@@ -1,6 +1,8 @@
 package edu.bu.metcs.activitylifecycle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class ViewCharActivity extends AppCompatActivity {
-    MathCharacter player;
+    private MathCharacter player;
     int healthMod, strMod, toughMod = 0;
 
     @Override
@@ -21,6 +23,12 @@ public class ViewCharActivity extends AppCompatActivity {
         MathCharacter character=(MathCharacter)intent.getSerializableExtra("character");
 
         this.player = character;
+
+        //Set the toolbar as the activity's app bar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.char_toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -64,7 +72,9 @@ public class ViewCharActivity extends AppCompatActivity {
             case R.id.charButtonHealthMinus:
                 if (healthMod > 0) {
                     healthMod--;
-                    updateTextView(R.id.charHealth, this.player.getHealth() + healthMod);
+                    int newHealth = this.player.getHealth() + healthMod;
+                    updateTextView(R.id.charHealth, newHealth);
+                    updateTextView(R.id.char_hp, this.player.calculateMaxHP(newHealth));
                 }
                 break;
             case R.id.charButtonStrMinus:
@@ -89,7 +99,9 @@ public class ViewCharActivity extends AppCompatActivity {
             case R.id.charButtonHealthPlus:
                 if (getRemainingPoints() > 0) {
                     healthMod++;
-                    updateTextView(R.id.charHealth, this.player.getHealth() + healthMod);
+                    int newHealth = this.player.getHealth() + healthMod;
+                    updateTextView(R.id.charHealth, newHealth);
+                    updateTextView(R.id.char_hp, this.player.calculateMaxHP(newHealth));
                 }
                 break;
             case R.id.charButtonStrPlus:
@@ -110,15 +122,13 @@ public class ViewCharActivity extends AppCompatActivity {
     }
 
     public void onClickSave(View view) {
-        //TODO: Testing this will be removed and used in appropriate places
-        this.player.addLevel();
-
         this.player.modHealth(healthMod);
         this.player.modStr(strMod);
         this.player.modTough(toughMod);
         this.player.modPoints(-(strMod+healthMod+toughMod));
+    }
 
-        //This part stays
+    public void onClickClose(View view) {
         Intent intent = new Intent();
         intent.putExtra("character", this.player);
         setResult(RESULT_OK, intent);

@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, requestViewChar);
     }
 
+    public void onClickShop(View view) {
+        Intent intent = new Intent(this, ViewShopActivity.class);
+        intent.putExtra("character", this.player);
+        startActivityForResult(intent, requestViewChar);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -6,10 +6,10 @@ import static java.lang.Math.round;
 
 class MathCharacter implements Serializable {
     private int level, xp, hp, strength, toughness, health;
-    private int pointsToUse, money;
+    private int pointsToUse, money, potions;
 
-    //Probably need to break this out into armor and weapon classes.
-    private int wAddLvl, wSubLvl, aAddLvl, aSubLvl;
+    private MathWeapon weapon;
+    private MathArmor armor;
 
     public MathCharacter() {
         this.level = 1;
@@ -19,11 +19,10 @@ class MathCharacter implements Serializable {
         this.toughness = 1;
         this.health = 1;
         this.pointsToUse = 2;
-        this.money = 0;
-        this.wAddLvl = 1;
-        this.wSubLvl = 0;
-        this.aAddLvl = 1;
-        this.aSubLvl = 0;
+        this.money = 1000; //TODO: Set this back to 0
+        this.potions = 1;
+        this.weapon = new MathWeapon(1, 0);
+        this.armor = new MathArmor(1, 0);
     }
 
     public int getLevel() {return this.level;}
@@ -31,43 +30,49 @@ class MathCharacter implements Serializable {
     public int getStrength() {return this.strength;}
 
     public int getXp() {
-        return xp;
+        return this.xp;
     }
 
     public int getHp() {
-        return hp;
+        return this.hp;
     }
 
     public int getToughness() {
-        return toughness;
+        return this.toughness;
     }
 
     public int getHealth() {
-        return health;
+        return this.health;
     }
 
     public int getPointsToUse() {
-        return pointsToUse;
+        return this.pointsToUse;
     }
+
+    public int getPotions() {return this.potions;}
 
     public int getMoney() {
-        return money;
+        return this.money;
     }
 
-    public int getwAddLvl() {
-        return wAddLvl;
+    public MathWeapon getWeapon() {
+        return this.weapon;
     }
 
-    public int getwSubLvl() {
-        return wSubLvl;
+    public MathArmor getArmor() {
+        return this.armor;
     }
 
-    public int getaAddLvl() {
-        return aAddLvl;
+    protected void setWeapon(MathWeapon weapon) {
+        this.weapon = weapon;
     }
 
-    public int getaSubLvl() {
-        return aSubLvl;
+    protected void setArmor(MathArmor armor) {
+        this.armor = armor;
+    }
+
+    protected void setMoney(int money) {
+        this.money = money;
     }
 
     protected void modStr(int amount) {
@@ -87,7 +92,15 @@ class MathCharacter implements Serializable {
     }
 
     public int getMaxHP() {
-        return 11 + (int)round(this.health * 3.5 * this.level);
+        return calculateMaxHP(this.health);
+    }
+
+    public int calculateMaxHP(int health) {
+        return 11 + (int)round(health * 3.5 * this.level);
+    }
+
+    public void addPotion(int number) {
+        this.potions += number;
     }
 
     //TODO: Shouldn't be public

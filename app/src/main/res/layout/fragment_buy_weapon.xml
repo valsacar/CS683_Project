@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".BuyWeaponFragment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="5"
+    android:rowCount="4"
+    android:alpha="1"
+    android:background="@android:color/white"
+    android:layout_weight="10">
+
+    <TextView
+        android:id="@+id/addition_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addition"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <Space
+        android:layout_width="100dp"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/addition_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <TextView
+        android:id="@+id/addition_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/add_inc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+" />
+
+    <TextView
+        android:id="@+id/subtraction_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subtraction"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <Space
+        android:layout_width="100dp"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/subtraction_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <TextView
+        android:id="@+id/subtraction_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/sub_inc_button"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/weapon_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ok" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/weapon_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+
+</GridLayout>
