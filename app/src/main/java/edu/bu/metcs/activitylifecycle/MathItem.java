@@ -6,6 +6,7 @@ import java.util.List;
 public abstract class MathItem implements Serializable {
     private static final String ADDITION = "+";
     private static final String Subtraction = "-";
+
     private int additionLevel, subtractionLevel;
 
     public MathItem() {

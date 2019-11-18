@@ -71,6 +71,7 @@
         android:id="@+id/shop_addition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/money_layout"
         app:layout_constraintVertical_bias="0"
@@ -122,7 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickWeapon"
-            android:text="Buy" />
+            android:text="@string/buy" />
 
         <TextView
             android:id="@+id/armor_text"
@@ -153,10 +154,11 @@
             android:layout_height="match_parent"/>
 
         <Button
+            android:id="@+id/buy_armor_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buy"
-            android:id="@+id/buy_armor_button"/>
+            android:onClick="onClickArmor"
+            android:text="@string/buy" />
 
         <TextView
             android:id="@+id/potion_text"
@@ -182,17 +184,50 @@
             tools:layout_editor_absoluteX="46dp"
             tools:layout_editor_absoluteY="658dp" />
 
-        <Space
-            android:layout_width="100dp"
-            android:layout_height="match_parent"/>
-
-        <Button
+        <TextView
+            android:id="@+id/potion_cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buy"
-            android:id="@+id/buy_potion_button"/>
+            android:layout_gravity="center_horizontal"
+            android:text="0GP"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#253A77"
+            tools:layout_editor_absoluteX="46dp"
+            tools:layout_editor_absoluteY="658dp" />
+
+        <Button
+            android:id="@+id/buy_potion_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickPotion"
+            android:text="@string/buy" />
 
     </GridLayout>
+
+    <Button
+        android:id="@+id/shop_button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickSave"
+        android:text="@string/char_button_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/char_button_cancel"
+        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shop_grid"
+        app:layout_constraintVertical_bias="0.507" />
+
+    <Button
+        android:id="@+id/char_button_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:onClick="onClickCancel"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/char_button_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shop_button_save"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".BuyWeaponFragment"
+    tools:context=".BuyMathItemFragment"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:columnCount="5"
@@ -100,7 +100,7 @@
         android:id="@+id/weapon_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ok" />
+        android:text="@string/ok" />
 
     <Space
         android:layout_width="0dp"
@@ -110,7 +110,7 @@
         android:id="@+id/weapon_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 
     <Space
         android:layout_width="0dp"

@@ -12,4 +12,11 @@ Added action bar to ViewCharActivity and ViewShopActivity.
 Added another crappy stick drawing for the shop.
 Updated MainActivity to launch ViewShopActivity.
 Modified MathCharacter to use the new MathWeapon and MathArmor instead of ints. 
- 
+
+18 Nov 19:
+
+Refactored BuyWeaponFragment into BuyMathItemFragment.
+Completed Weapon upgrade purchases.
+Implemented the buying of armor.
+Implemented buying of potions.
+Completed ViewShopActivity to save and pass back the results of purchases.

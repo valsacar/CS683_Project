@@ -7,6 +7,8 @@ import static java.util.Arrays.asList;
 
 public class MathWeapon extends MathItem implements Serializable {
 
+    public static final String TYPE_STRING = "weapon";
+
     public MathWeapon(int add, int sub) {
         super();
         this.setAdditionLevel(add);

@@ -2,10 +2,7 @@ package edu.bu.metcs.activitylifecycle;
 
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class BuyWeaponFragment extends Fragment {
+public class BuyMathItemFragment extends Fragment {
     private MathItem item;
     private int money;
     private String type;
     private View thisView;
 
 
-    public BuyWeaponFragment() {
+    public BuyMathItemFragment() {
         // Required empty public constructor
     }
 
@@ -30,7 +27,7 @@ public class BuyWeaponFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_buy_weapon, container, false);
+        View v = inflater.inflate(R.layout.fragment_buy_mathitem, container, false);
 
         this.thisView = v;
 
@@ -69,7 +66,7 @@ public class BuyWeaponFragment extends Fragment {
                 int cost = item.nextLevelCost("+");
 
                 if (cost > money) {
-                    Toast.makeText(getActivity(), "Not enough money", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.no_money, Toast.LENGTH_SHORT).show();
                 } else {
                     money -= cost;
                     item.incAdditionLevel();
@@ -81,12 +78,31 @@ public class BuyWeaponFragment extends Fragment {
             }
         });
 
+        Button subInc = (Button) v.findViewById(R.id.sub_inc_button);
+        subInc.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                int cost = item.nextLevelCost("+");
+
+                if (cost > money) {
+                    Toast.makeText(getActivity(), R.string.no_money, Toast.LENGTH_SHORT).show();
+                } else {
+                    money -= cost;
+                    item.incSubtractionLevel();
+
+                    updateTextView(R.id.subtraction_stats, String.valueOf(item.getSubtractionLevel()));
+                    updateTextView(R.id.subtraction_cost, item.nextLevelCost("+") + "GP");
+                    ((ViewShopActivity)getActivity()).updateTextView(R.id.money, money + "GP");
+                }
+            }
+        });
+
         return v;
     }
 
-    public void setItem(MathItem item) {
-        this.item = item;
-    }
+    public void setItem(MathItem item) {this.item = item;}
 
     public void setMoney(int money) {
         this.money = money;
@@ -98,11 +114,6 @@ public class BuyWeaponFragment extends Fragment {
 
     protected void updateTextView(int id, String update) {
         TextView tView = (TextView)thisView.findViewById(id);
-
-        if (tView == null) {
-            Log.d("tView is", "null");
-        } else { Log.d("tView is", "not null");}
-
         tView.setText(update);
     }
 

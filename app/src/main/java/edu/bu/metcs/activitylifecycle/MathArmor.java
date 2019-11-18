@@ -7,6 +7,8 @@ import static java.util.Arrays.asList;
 
 public class MathArmor extends MathItem implements Serializable {
 
+    public static final String TYPE_STRING = "armor";
+
     public MathArmor(int add, int sub) {
         super();
         this.setAdditionLevel(add);

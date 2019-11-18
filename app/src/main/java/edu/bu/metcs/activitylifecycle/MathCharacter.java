@@ -103,8 +103,17 @@ class MathCharacter implements Serializable {
         this.potions += number;
     }
 
-    //TODO: Shouldn't be public
-    public void addLevel() {this.level++;}
+    public int getPotionCost() {return 500;}
+
+    public int spendMoney(int amount) {
+        return this.money -= amount;
+    }
+
+    public int gainMoney(int amount) {
+        return this.money += amount;
+    }
+
+    private void addLevel() {this.level++;}
 
 
 }
