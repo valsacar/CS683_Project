@@ -1,4 +1,4 @@
-package edu.bu.metcs.activitylifecycle;
+package edu.bu.metcs.mathandslash;
 
 import org.junit.Test;
 

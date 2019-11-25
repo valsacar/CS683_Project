@@ -20,3 +20,25 @@ Completed Weapon upgrade purchases.
 Implemented the buying of armor.
 Implemented buying of potions.
 Completed ViewShopActivity to save and pass back the results of purchases.
+
+20 Nov 19:
+
+Started to implement save game as saved preferences.
+
+21 Nov 19:
+
+Created PreferenceHelper to handle saving and loading, as well as other universal aspects.
+Updated ViewCharActivity to use PreferenceHelper.
+
+22 Nov 19:
+
+Updated ViewShopActivity to use PreferenceHelper.
+Fixed multiple bugs in ViewShopActivity and BuyMathItemFragment related to visual display and a few that allowed for free upgrades.
+Created copy constructors for MathItem and children.
+Updated BuyMathItemFragment to use a copy of the MathItem to simplify the code (fixing mentioned bugs), Updated ViewShopAcvity to match.
+
+23 Nov 19:
+
+Modified ViewCharActivity to use PreferenceHelper without using the 3 mod variables.
+Updated MainActivity to fix the button overlap on smaller screens.
+Created MathFightActivity and started the basic layout.

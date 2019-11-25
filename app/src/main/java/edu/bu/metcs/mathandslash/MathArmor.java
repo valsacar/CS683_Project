@@ -1,4 +1,4 @@
-package edu.bu.metcs.activitylifecycle;
+package edu.bu.metcs.mathandslash;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +13,10 @@ public class MathArmor extends MathItem implements Serializable {
         super();
         this.setAdditionLevel(add);
         this.setSubtractionLevel(sub);
+    }
+
+    public MathArmor(MathArmor toCopy) {
+        super(toCopy);
     }
 
     public String getProblem(String type) {

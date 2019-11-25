@@ -1,4 +1,4 @@
-package edu.bu.metcs.activitylifecycle;
+package edu.bu.metcs.mathandslash;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation ().getTargetContext ();
 
-        assertEquals ("edu.bu.metcs.activitylifecycle", appContext.getPackageName ());
+        assertEquals ("edu.bu.metcs.mathandslash", appContext.getPackageName ());
     }
 }

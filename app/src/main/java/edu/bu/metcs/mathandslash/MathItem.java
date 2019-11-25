@@ -1,4 +1,4 @@
-package edu.bu.metcs.activitylifecycle;
+package edu.bu.metcs.mathandslash;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,6 +12,11 @@ public abstract class MathItem implements Serializable {
     public MathItem() {
         this.additionLevel = 0;
         this.subtractionLevel = 0;
+    }
+
+    public MathItem(MathItem toCopy) {
+        this.additionLevel = toCopy.additionLevel;
+        this.subtractionLevel = toCopy.subtractionLevel;
     }
 
     public int getAdditionLevel() {

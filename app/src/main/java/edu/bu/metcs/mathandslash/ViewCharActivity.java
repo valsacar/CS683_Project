@@ -1,28 +1,22 @@
-package edu.bu.metcs.activitylifecycle;
+package edu.bu.metcs.mathandslash;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class ViewCharActivity extends AppCompatActivity {
     private MathCharacter player;
-    int healthMod, strMod, toughMod = 0;
+    int origStr, origHealth, origTough;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_char);
 
-        Intent intent=getIntent();
-        MathCharacter character=(MathCharacter)intent.getSerializableExtra("character");
-
-        this.player = character;
 
         //Set the toolbar as the activity's app bar
         Toolbar toolbar = (Toolbar) findViewById(R.id.char_toolbar);
@@ -32,16 +26,25 @@ public class ViewCharActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
+
+        this.player = PreferenceHelper.reloadCurrentCharacter();
 
         updateTextView(R.id.char_lvl, this.player.getLevel());
-        updateTextView(R.id.charStr, this.player.getStrength());
+
         updateTextViewMax(R.id.char_hp, this.player.getHp(), this.player.getMaxHP());
         updateTextView(R.id.char_xp, this.player.getXp());
         updateTextView(R.id.char_remain, this.player.getPointsToUse());
-        updateTextView(R.id.charHealth, this.player.getHealth());
-        updateTextView(R.id.charTough, this.player.getToughness());
+
+        origStr = this.player.getStrength();
+        updateTextView(R.id.charStr, origStr);
+
+        origHealth = this.player.getHealth();
+        updateTextView(R.id.charHealth, origHealth);
+
+        origTough = this.player.getToughness();
+        updateTextView(R.id.charTough, origTough);
 
     }
 
@@ -63,75 +66,71 @@ public class ViewCharActivity extends AppCompatActivity {
         tView.setText(base + " " + update + "/" + max);
     }
 
-    private int getRemainingPoints() {
-        return this.player.getPointsToUse() - healthMod - toughMod - strMod;
-    }
 
     public void onClickMinus(View view) {
         switch (view.getId()) {
             case R.id.charButtonHealthMinus:
-                if (healthMod > 0) {
-                    healthMod--;
-                    int newHealth = this.player.getHealth() + healthMod;
-                    updateTextView(R.id.charHealth, newHealth);
-                    updateTextView(R.id.char_hp, this.player.calculateMaxHP(newHealth));
+                if (origHealth < this.player.getHealth()) {
+                    this.player.modHealth(-1);
+                    updateTextView(R.id.charHealth, this.player.getHealth());
+                    updateTextView(R.id.char_hp, this.player.getMaxHP());
+                    this.player.modPoints(1);
                 }
                 break;
             case R.id.charButtonStrMinus:
-                if (strMod > 0) {
-                    strMod--;
-                    updateTextView(R.id.charStr, this.player.getStrength() + strMod);
+                if (origStr < this.player.getStrength()) {
+                    this.player.modStr(-1);
+                    updateTextView(R.id.charStr, this.player.getStrength());
+                    this.player.modPoints(1);
                 }
                 break;
             case R.id.charButtonToughMinus:
-                if (toughMod > 0) {
-                    toughMod--;
-                    updateTextView(R.id.charTough, this.player.getToughness() + toughMod);
+                if (origTough < this.player.getToughness()) {
+                    this.player.modTough(-1);
+                    updateTextView(R.id.charTough, this.player.getToughness());
+                    this.player.modPoints(1);
                 }
                 break;
         }
 
-        updateTextView(R.id.char_remain, this.player.getPointsToUse() - toughMod - healthMod - strMod);
+        updateTextView(R.id.char_remain, this.player.getPointsToUse());
     }
 
     public void onClickAdd(View view) {
         switch (view.getId()) {
             case R.id.charButtonHealthPlus:
-                if (getRemainingPoints() > 0) {
-                    healthMod++;
-                    int newHealth = this.player.getHealth() + healthMod;
-                    updateTextView(R.id.charHealth, newHealth);
-                    updateTextView(R.id.char_hp, this.player.calculateMaxHP(newHealth));
+                if (this.player.getPointsToUse() > 0) {
+                    this.player.modHealth(1);
+                    updateTextView(R.id.charHealth, this.player.getHealth());
+                    updateTextView(R.id.char_hp, this.player.getMaxHP());
+                    this.player.modPoints(-1);
                 }
                 break;
             case R.id.charButtonStrPlus:
-                if (getRemainingPoints() > 0) {
-                    strMod++;
-                    updateTextView(R.id.charStr, this.player.getStrength() + strMod);
+                if (this.player.getPointsToUse() > 0) {
+                    this.player.modStr(1);
+                    updateTextView(R.id.charStr, this.player.getStrength());
+                    this.player.modPoints(-1);
                 }
                 break;
             case R.id.charButtonToughPlus:
-                if (getRemainingPoints() > 0) {
-                    toughMod++;
-                    updateTextView(R.id.charTough, this.player.getToughness() + toughMod);
+                if (this.player.getPointsToUse() > 0) {
+                    this.player.modTough(1);
+                    updateTextView(R.id.charTough, this.player.getToughness());
+                    this.player.modPoints(-1);
                 }
                 break;
         }
 
-        updateTextView(R.id.char_remain, this.player.getPointsToUse() - toughMod - healthMod - strMod);
+        updateTextView(R.id.char_remain, this.player.getPointsToUse());
     }
 
     public void onClickSave(View view) {
-        this.player.modHealth(healthMod);
-        this.player.modStr(strMod);
-        this.player.modTough(toughMod);
-        this.player.modPoints(-(strMod+healthMod+toughMod));
+        PreferenceHelper.save();
+        finish();
     }
 
     public void onClickClose(View view) {
-        Intent intent = new Intent();
-        intent.putExtra("character", this.player);
-        setResult(RESULT_OK, intent);
         finish();
     }
 }

@@ -1,4 +1,4 @@
-package edu.bu.metcs.activitylifecycle;
+package edu.bu.metcs.mathandslash;
 
 import java.io.Serializable;
 
@@ -114,6 +114,5 @@ class MathCharacter implements Serializable {
     }
 
     private void addLevel() {this.level++;}
-
 
 }

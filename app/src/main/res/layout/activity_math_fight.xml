@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MathFightActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fight_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="@string/fight_button"/>
+
+    <ImageView
+        android:id="@+id/fight_image"
+        android:layout_width="328dp"
+        android:layout_height="260dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fight_toolbar"
+        app:layout_constraintVertical_bias="0.033"
+        app:srcCompat="@drawable/character" />
+
+
+    <TextView
+        android:id="@+id/fight_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="ATTACK"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/fight_input"
+        app:layout_constraintEnd_toEndOf="@+id/fight_image"
+        app:layout_constraintHorizontal_bias="0.397"
+        app:layout_constraintStart_toStartOf="@+id/fight_image"
+        app:layout_constraintTop_toTopOf="@+id/fight_image"
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/fight_problem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/fight_input"
+        app:layout_constraintEnd_toEndOf="@+id/fight_image"
+        app:layout_constraintHorizontal_bias="0.397"
+        app:layout_constraintStart_toStartOf="@+id/fight_image"
+        app:layout_constraintTop_toTopOf="@+id/fight_image"
+        android:textSize="25dp"
+        android:text="You don't see me"
+        android:background="@color/colorPrimary"
+        android:visibility="invisible"/>
+
+
+    <Button
+        android:id="@+id/fight_add"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fight_image"
+        app:layout_constraintVertical_bias="0.0"
+        android:onClick="onClickAdd"/>
+
+    <Button
+        android:id="@+id/fight_sub"
+        android:layout_width="150dp"
+        android:layout_height="140dp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="@+id/fight_add"
+        app:layout_constraintTop_toBottomOf="@+id/fight_image"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/fight_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/fight_default"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fight_image"
+        app:layout_constraintVertical_bias="0.034"
+        android:visibility="invisible"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

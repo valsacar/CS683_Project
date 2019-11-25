@@ -1,4 +1,4 @@
-package edu.bu.metcs.activitylifecycle;
+package edu.bu.metcs.mathandslash;
 
 
 import android.os.Bundle;
@@ -31,11 +31,7 @@ public class BuyMathItemFragment extends Fragment {
 
         this.thisView = v;
 
-        updateTextView(R.id.addition_stats, String.valueOf(item.getAdditionLevel()));
-        updateTextView(R.id.subtraction_stats, String.valueOf(item.getSubtractionLevel()));
-
-        updateTextView(R.id.addition_cost, item.nextLevelCost("+") + "GP");
-        updateTextView(R.id.subtraction_cost, item.nextLevelCost("-") + "GP");
+        this.resetText();
 
         Button okButton = (Button) v.findViewById(R.id.weapon_ok);
         okButton.setOnClickListener(new View.OnClickListener()
@@ -101,6 +97,16 @@ public class BuyMathItemFragment extends Fragment {
 
         return v;
     }
+
+    public void resetText() {
+        updateTextView(R.id.addition_stats, String.valueOf(item.getAdditionLevel()));
+        updateTextView(R.id.subtraction_stats, String.valueOf(item.getSubtractionLevel()));
+
+        updateTextView(R.id.addition_cost, item.nextLevelCost("+") + "GP");
+        updateTextView(R.id.subtraction_cost, item.nextLevelCost("-") + "GP");
+    }
+
+
 
     public void setItem(MathItem item) {this.item = item;}
 

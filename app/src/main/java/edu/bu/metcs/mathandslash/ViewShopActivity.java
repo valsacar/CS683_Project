@@ -1,14 +1,11 @@
-package edu.bu.metcs.activitylifecycle;
+package edu.bu.metcs.mathandslash;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
@@ -30,14 +27,11 @@ public class ViewShopActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        Intent intent=getIntent();
-        MathCharacter character=(MathCharacter)intent.getSerializableExtra("character");
-
-        this.player = character;
+        this.player = PreferenceHelper.getCurrentCharacter();
 
         this.weaponFragment = new BuyMathItemFragment();
 
-        weaponFragment.setItem(this.player.getWeapon());
+        weaponFragment.setItem(new MathWeapon(this.player.getWeapon()));
         weaponFragment.setMoney(this.player.getMoney());
         weaponFragment.setType(MathWeapon.TYPE_STRING);
 
@@ -51,7 +45,7 @@ public class ViewShopActivity extends AppCompatActivity {
 
         this.armorFragment = new BuyMathItemFragment();
 
-        armorFragment.setItem(this.player.getArmor());
+        armorFragment.setItem(new MathArmor(this.player.getArmor()));
         armorFragment.setMoney(this.player.getMoney());
         armorFragment.setType(MathArmor.TYPE_STRING);
 
@@ -60,7 +54,13 @@ public class ViewShopActivity extends AppCompatActivity {
         transaction.hide(armorFragment);
         // commit the transaction.
         transaction.commit();
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        this.player = PreferenceHelper.reloadCurrentCharacter();
 
         updateTextView(R.id.potion_count, String.valueOf(player.getPotions()));
         updateTextView(R.id.weapon_stats, player.getWeapon().toString());
@@ -110,8 +110,9 @@ public class ViewShopActivity extends AppCompatActivity {
         GridLayout gl = findViewById(R.id.shop_grid);
         gl.setVisibility(View.INVISIBLE);
 
-        weaponFragment.setItem(this.player.getWeapon());
+        weaponFragment.setItem(new MathWeapon(this.player.getWeapon()));
         weaponFragment.setMoney(this.player.getMoney());
+        weaponFragment.resetText();
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         if (weaponFragment.isAdded()) { // if the fragment is already in container
@@ -133,8 +134,9 @@ public class ViewShopActivity extends AppCompatActivity {
         GridLayout gl = findViewById(R.id.shop_grid);
         gl.setVisibility(View.INVISIBLE);
 
-        armorFragment.setItem(this.player.getArmor());
+        armorFragment.setItem(new MathArmor(this.player.getArmor()));
         armorFragment.setMoney(this.player.getMoney());
+        armorFragment.resetText();
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         if (armorFragment.isAdded()) { // if the fragment is already in container
@@ -167,15 +169,11 @@ public class ViewShopActivity extends AppCompatActivity {
     }
 
     public void onClickSave(View view) {
-        Intent intent = new Intent();
-        intent.putExtra("character", this.player);
-        setResult(RESULT_OK, intent);
+        PreferenceHelper.save();
         finish();
     }
 
-    public void onClickCancel(View view) {
-        finish();
-    }
+    public void onClickCancel(View view) {finish();}
 
 
 }
