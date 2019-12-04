@@ -2,6 +2,9 @@ package edu.bu.metcs.mathandslash;
 
 import java.io.Serializable;
 
+import static java.lang.Math.max;
+import static java.lang.Math.pow;
+import static java.lang.Math.random;
 import static java.lang.Math.round;
 
 class MathCharacter implements Serializable {
@@ -19,10 +22,49 @@ class MathCharacter implements Serializable {
         this.toughness = 1;
         this.health = 1;
         this.pointsToUse = 2;
-        this.money = 1000; //TODO: Set this back to 0
+        this.money = 0;
         this.potions = 1;
         this.weapon = new MathWeapon(1, 0);
         this.armor = new MathArmor(1, 0);
+    }
+
+    public MathCharacter(int level) {
+        this.level = level;
+        this.xp = (this.xpToNext()/2) + (int)(random() * (this.xpToNext()/2));
+        this.hp = this.getMaxHP();
+        this.strength = 1;
+        this.toughness = 1;
+        this.health = 1;
+
+        // Give some random stats
+        for (int i = level*2;i>0;i--) {
+            int choice = (int)(random() * 3);
+            switch (choice) {
+                case 0: this.strength++; break;
+                case 1: this.toughness++; break;
+                case 2: this.health++; break;
+            }
+        }
+
+        this.pointsToUse = 2;
+        this.money = (int)((random() * level * 100) + pow(level, 1.5) + 50);
+        this.potions = 1;
+
+        this.weapon = new MathWeapon(1, 0);
+        this.armor = new MathArmor(1, 0);
+
+        // Give some random weapon/armor strengths
+        int totalPoints = (int)(random() * level * 2) + 1;
+        for (int i = totalPoints;i>0;i--) {
+            int choice = (int)(random() * 4);
+            switch (choice) {
+                case 0: this.weapon.incAdditionLevel(); break;
+                case 1: this.weapon.incSubtractionLevel(); break;
+                case 3: this.armor.incAdditionLevel(); break;
+                case 4: this.armor.incSubtractionLevel(); break;
+            }
+        }
+
     }
 
     public int getLevel() {return this.level;}
@@ -95,6 +137,10 @@ class MathCharacter implements Serializable {
         return calculateMaxHP(this.health);
     }
 
+    public int xpToNext() {
+        return (int)pow(this.level, 2) * 100;
+    }
+
     public int calculateMaxHP(int health) {
         return 11 + (int)round(health * 3.5 * this.level);
     }
@@ -113,6 +159,36 @@ class MathCharacter implements Serializable {
         return this.money += amount;
     }
 
-    private void addLevel() {this.level++;}
+    private void addLevel() {
+        this.level++;
+        this.hp = this.getMaxHP(); // Full heal
+        this.pointsToUse += 2;
+        this.xp = 0; //Reset xp... this might be too harsh.
+    }
+
+    public Boolean takeDamage(int damage) {
+        damage = max(1, damage);
+        this.hp -= damage;
+
+        if (this.hp <= 0) {
+            this.hp = 0;
+
+            this.xp /= 1.5; //Lose some xp
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void gainXp(int amt) {
+        this.xp += amt;
+
+        if (this.xp >= xpToNext()) addLevel();
+    }
+
+    public void fullHeal() {
+        this.hp = getMaxHP();
+    }
 
 }

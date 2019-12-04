@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public abstract class MathItem implements Serializable {
-    private static final String ADDITION = "+";
-    private static final String Subtraction = "-";
+    public static final String ADDITION = "+";
+    public static final String SUBTRACTION = "-";
 
     private int additionLevel, subtractionLevel;
 
@@ -47,10 +47,6 @@ public abstract class MathItem implements Serializable {
     public String toString() {
         return this.additionLevel + "+/" + this.subtractionLevel + "-";
     }
-
-    public abstract String getProblem(String type);
-
-    public abstract List<String> getAnswers(String problem);
 
     public abstract int nextLevelCost(String type);
 }

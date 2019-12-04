@@ -85,7 +85,8 @@
         app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="@+id/fight_add"
         app:layout_constraintTop_toBottomOf="@+id/fight_image"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:onClick="onClickMinus"/>
 
     <EditText
         android:id="@+id/fight_input"

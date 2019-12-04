@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//NOTE: I'm aware that the way this is implemented the player can just exit out and the fight will reset
+// I'm ok with this, it's basically running away.
 public class MathFightActivity extends AppCompatActivity {
 
     @Override
@@ -58,6 +60,11 @@ public class MathFightActivity extends AppCompatActivity {
 
     public void onClickAdd(View view) {
         Toast.makeText(this, "I pressed +", Toast.LENGTH_SHORT).show();
+        hideButtons();
+    }
+
+    public void onClickMinus(View view) {
+        Toast.makeText(this, "I pressed -", Toast.LENGTH_SHORT).show();
         hideButtons();
     }
 

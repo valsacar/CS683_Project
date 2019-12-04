@@ -42,3 +42,15 @@ Updated BuyMathItemFragment to use a copy of the MathItem to simplify the code (
 Modified ViewCharActivity to use PreferenceHelper without using the 3 mod variables.
 Updated MainActivity to fix the button overlap on smaller screens.
 Created MathFightActivity and started the basic layout.
+
+2 Dec 19:
+
+Created MathBattle to handle making the math problems and answer options.
+Modified MathCharacter to be able to generate enemies.
+Moved some parts of MathItem/MathArmor/MathWeapon to MathBattle.
+Added xpToNext() to MathCharacter and displayed in ViewCharActivity.
+Added OnClickSubtract to MathFightActivity/activity_math_fight.xml.
+
+3 Dec 19:
+Added addLevel logic to MathCharacter.
+Added all logic for handling fights, xp gain, gold gain, etc.  Logic for determining the problems still needs to be done.

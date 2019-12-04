@@ -19,14 +19,6 @@ public class MathArmor extends MathItem implements Serializable {
         super(toCopy);
     }
 
-    public String getProblem(String type) {
-        return "1+1";
-    }
-
-    public List<String> getAnswers(String problem) {
-        return asList("3", "4", "2");
-    }
-
     public int nextLevelCost(String type) {
         return 100;
     }

@@ -34,7 +34,7 @@ public class ViewCharActivity extends AppCompatActivity {
         updateTextView(R.id.char_lvl, this.player.getLevel());
 
         updateTextViewMax(R.id.char_hp, this.player.getHp(), this.player.getMaxHP());
-        updateTextView(R.id.char_xp, this.player.getXp());
+        updateTextViewMax(R.id.char_xp, this.player.getXp(), this.player.xpToNext());
         updateTextView(R.id.char_remain, this.player.getPointsToUse());
 
         origStr = this.player.getStrength();
