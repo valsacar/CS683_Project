@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/light_background"
+    android:orientation="vertical">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/help_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:elevation="4dp"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:title="@string/help_button" />
+
+<ScrollView android:id="@+id/ScrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="6dip"
+        >
+        <TextView
+            android:id="@+id/help_page_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help_page_intro"
+            android:padding="2dip"
+            android:layout_weight="1"
+            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dip">
+
+            <ImageButton
+                android:id="@+id/help_button1"
+                style="@style/HelpButton.Dark"
+                android:layout_width="180dip"
+                android:layout_height="90dip"
+                android:layout_weight="1"
+                android:src="@drawable/character"
+                android:onClick="onClickHelp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/help_text_section_character"
+                android:padding="8dip"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageButton android:id="@+id/help_button2"
+                android:layout_weight="1"
+                android:layout_width="180dip"
+                android:layout_height="90dip"
+                style="@style/HelpButton.Dark"
+                android:onClick="onClickHelp"
+                android:src="@drawable/shop"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/help_text_section_shop"
+                android:padding="8dip"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageButton android:id="@+id/help_button3"
+                android:layout_weight="1"
+                android:layout_width="180dip"
+                android:layout_height="90dip"
+                style="@style/HelpButton.Dark"
+                android:onClick="onClickHelp"
+                android:src="@drawable/result_player_won"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/help_text_section_fight"
+                android:padding="8dip"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
+</LinearLayout>

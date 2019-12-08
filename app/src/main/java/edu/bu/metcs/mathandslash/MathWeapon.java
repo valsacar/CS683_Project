@@ -1,9 +1,8 @@
 package edu.bu.metcs.mathandslash;
 
 import java.io.Serializable;
-import java.util.List;
-
-import static java.util.Arrays.asList;
+import static java.lang.Math.max;
+import static java.lang.Math.pow;
 
 public class MathWeapon extends MathItem implements Serializable {
 
@@ -20,6 +19,24 @@ public class MathWeapon extends MathItem implements Serializable {
     }
 
     public int nextLevelCost(String type) {
-        return 100;
+        int lvl = 0;
+
+        switch (type) {
+            case MathItem.ADDITION:
+                lvl = this.getAdditionLevel();
+                break;
+            case MathItem.SUBTRACTION:
+                lvl = this.getSubtractionLevel();
+                break;
+            case MathItem.MULTIPLICATION:
+                lvl = this.getMultLevel();
+                break;
+            case MathItem.DIVISION:
+                lvl = this.getDivLevel();
+                break;
+        }
+
+
+        return max(100, (int)(pow(lvl, 1.6) * 100));
     }
 }

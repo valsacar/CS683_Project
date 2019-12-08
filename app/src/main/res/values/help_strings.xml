@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="no_help_available">
+      There is no help available at this time.
+    </string>
+    <string name="about_help_topics">
+      Help is available for each section of this app.
+    </string>
+
+    <string name="help_page_intro">For detailed information on your character, the shop and fighting click on the appropriate image below.</string>
+    <string name="help_page_intro_html">
+    <![CDATA[
+      For detailed information on your character, the shop and fighting click on the appropriate image below.
+       ]]>
+    </string>
+
+    <string name="help_text_section_character">
+     The View Character button allows you to see your characters statistics and spend ability points.
+    </string>
+    <string name="topic_section_character">
+    <![CDATA[
+      <p>
+        On the View Character screen you will see all of the details for your characters level and statistics.
+        </p>
+      <p><b>Stats:</b>
+      <p>Strength increases the damage you do with a successful attack.</p>
+      <p>Toughness gives you damage resistance and also helps you dodge enemy attacks.</p?
+      <p>Health helps be healthier and have more hit points (HP).</p>
+      <p>Points to use are any remaining points that you have not spent, you can raise any of your statistics with these.</p>
+      <p></p><p><b>Levels and Experience:</b></p>
+        <p>Level (LVL) is your current characters level.  As you gain levels you will gain an additional 2 stat points to use for your character.  You will also gain HP based off your health stat.</p>
+        <blockquote>A special note on level, during fights you will be given 3 answer choices only until level 5.  After level 5 you will have to input the answer using a keyboard.</blockquote>
+        <p>XP is your current experience and how much is needed to gain a level.  For example, 435/900 means you currently have 435XP and you need a total of 900 to gain the next level.  If you lose a battle you will lose some experience, but winning will gain you experience.  The harder the enemy, the more experience you will gain.</p>
+        <p>HP: This is your current and maximum hit points, you will gain a full heal after each battle.  Your maximum hit points are determined by your health stat and level.</p>
+      ]]>
+    </string>
+
+    <string name="help_text_section_shop">
+     The Shop allows you to buy upgrades to your weapons, armor and buy healing potions.
+    </string>
+    <string name="topic_section_shop">
+    <![CDATA[
+      <p>
+        On the Shop screen you will see how much gold you have, as well as your current weapon/armor strengths and how many potions you currently have.  At the start of the game will will have level 1 addition and subtraction in both weapons and armor as well as 3 healing potions.
+      </p>
+      <p><b>Gold</b></p>
+      <p>This is how much gold you have to spend, you gain more gold by winning fights.  The harder the opponent, the more gold you will earn!</p>
+      <p><b>Weapon and Armor</b></p>
+      On the main shop screen you will see your current statistics, for example 2+/3-/1*/1÷ means you have level 2 in addition, level 3 in subtraction, and level 1 in both multiplication and division.</p>
+      <p></p>
+      <p>Clicking on the buy button will take you to a screen where you can upgrade the individual levels.  Levels get more expensive as you increase in a specific damage type.</p>
+      <p><b>Effects of higher levels</b></p>
+      As you increase a weapons upgrade not only will you do more damage with that type but you will also unlock other powers.</p>
+      <ul>
+      <li>Below upgrade 7 you will only get 2 numbers, for example 1 + 3.  After upgrade 7, and every 7 upgrade after that (7, 14, 21, etc) you will have a chance of getting multiple numbers in a problem.  For example 10 + 3 + 8.  The maximum is 5.</li>
+      <li>Once you have two attack types at, or above, upgrade 10 you have the chance of doing combo attacks.  For example, if I have both addition and multiplication at level 10 then I might get a problem that says 12 + 5 * 8. <b>Remember the order of operations!</b></li>
+      <li>Once you have subtraction upgraded to level 6 you may start seeing negative numbers in both problems and answers.</li>
+      <li>One you have division upgraded to level 7 you will start having decimal answers.  Below upgrade 7 all division problems and answers will be whole numbers.</li>
+      <li>Armor upgrades only provide damage resistance (lower damage) against those types.  What problems you get when defending is based off your enemies skills, but they will be close to your own.</li>
+      </ul>
+      <p><b>Potions</b></p>
+      <p>Potions are used during battle to heal you.  They are lower level problems and you will always be given 3 answer options.  Speed is the key here, as the faster you get the correct answer the more they will heal you.  At most a potion will heal you for up to half your maximum HP.  A wrong answer means a bad potion, you will get no healing.</p>
+
+       ]]>
+    </string>
+
+
+    <string name="help_text_section_fight">
+      The fight button will take you into the battles, is your math strong enough to slash your way through your opponents?
+    </string>
+    <string name="topic_section_fight">
+    "<![CDATA[
+      <p>Once you go into a fight you will be tested on your speed and accuracy at various types of math problems.</p>
+      <p>At the top of the screen you will see the arena, under each character you can see both you and your opponents hit points.  First one to hit zero loses!</p>
+      <p>You always get to attack first, so you must choose which attack type to use.  You will only see options for those that you have trained in, go to the shop to learn new skills or upgrade your current ones.<p>
+      <p>You also have the potion button, this will present you with 3 answer options and with the correct answer you will heal up to half your health.  Be quick about it, the faster you get the correct answer the more you heal.</p>
+      <p>Once you select an attack you will be given a math problem to solve, take your time as speed is not important here.  An incorrect answer will always miss, doing no damage to your opponent.</p>
+      <p>After your attack the enemy will attack, they will choose a random attack type that they are skilled in and you will be presented with a problem to solve.  An incorrect answer gives the enemy a critical hit, so take your time (time doesn\'t matter here) and make sure you get the right answer.  If you get the answer wrong we will show you the correct answer.</p>
+      <p>After answering, for an attack or defense, you will be told the result.  There are multiple types of hits, so let's explain what the words mean.</p>
+      <p><ul>
+      <li> Strong - Your opponent (or you) is vulnerable to this attack type (low armor), if you find a strong attack you want to stick with that type.</li>
+      <li> Weak - This is the opposite of strong, they have high armor here so the attacks are not doing maximum damage.  You should avoid weak attacks.</li>
+      <li> Critical - You struck them well, scoring bonus damage.  This is random, but it\'s nice when it happens.</li>
+      <li> Glancing - A minor hit, dealing less damage than normal.  This is random, and it\'s not nice when it happens.</li>
+      <li> Miss - This can happen for two reasons.  If you are attacking and got the answer wrong you will always miss.  If the enemy is attacking, even if you got the answer correct, sometimes they will miss.  Any time you get the answer wrong we will show you the correct answer.</li>
+      <li> Hit - Just a boring old plain hit.</li>
+      </p></ul>
+      <p>Those modifiers can be combined, so you might see Strong Critical Hit meaning you got a critical hit AND they are weak against that attack type.</p>
+      <p><blockquote>Note: If you run away (use the back button) you will NOT be healed, but you will get a new opponent next time you enter the fight.</blockquote></p>
+       ]]>"
+    </string>
+
+</resources>

@@ -54,3 +54,11 @@ Added OnClickSubtract to MathFightActivity/activity_math_fight.xml.
 3 Dec 19:
 Added addLevel logic to MathCharacter.
 Added all logic for handling fights, xp gain, gold gain, etc.  Logic for determining the problems still needs to be done.
+
+6-9 Dec 19:
+Lots of work over the weekend.
+Updated MathFightActivity to handle the fights.
+Created HelpActivity and HelpTopicActivity to display help files.
+With play tester report adjusted the cost of potions and increased the starting number of potions.
+Various bug fixes and balance changes to nearly all aspects of items, characters and fights.
+App is feature complete per the original designed essential functions and a few of the desirable ones.

@@ -99,6 +99,8 @@ public class ViewShopActivity extends AppCompatActivity {
         ft.hide(armorFragment);
         ft.commit();
 
+        showButtons();
+
         GridLayout gl = findViewById(R.id.shop_grid);
         gl.setVisibility(View.VISIBLE);
         getSupportActionBar().setTitle(R.string.shop_button);
@@ -122,10 +124,23 @@ public class ViewShopActivity extends AppCompatActivity {
         }
         // Hide armor
         if (armorFragment.isAdded()) { ft.hide(armorFragment); }
+
+        //Hide buttons
+        hideButtons();
         ft.commit();
 
         //Update ActionBar
         getSupportActionBar().setTitle(title + " - " + capitalize(MathWeapon.TYPE_STRING));
+    }
+
+    private void hideButtons() {
+        findViewById(R.id.shop_button_save).setVisibility(View.INVISIBLE);
+        findViewById(R.id.shop_button_cancel).setVisibility(View.INVISIBLE);
+    }
+
+    private void showButtons() {
+        findViewById(R.id.shop_button_save).setVisibility(View.VISIBLE);
+        findViewById(R.id.shop_button_cancel).setVisibility(View.VISIBLE);
     }
 
     public void onClickArmor(View view) {
@@ -144,8 +159,12 @@ public class ViewShopActivity extends AppCompatActivity {
         } else { // fragment needs to be added to frame container
             ft.add(R.id.shop_addition, armorFragment, MathArmor.TYPE_STRING);
         }
-        // Hide armor
+        // Hide weapon
         if (weaponFragment.isAdded()) { ft.hide(weaponFragment); }
+
+        //Hide buttons
+        hideButtons();
+
         ft.commit();
 
         //Update ActionBar

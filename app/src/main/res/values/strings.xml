@@ -16,15 +16,41 @@
     <string name="weapon">Weapon</string>
     <string name="armor">Armor</string>
     <string name="potion">Potion</string>
-    <string name="money">Money</string>
+    <string name="money">Gold</string>
     <string name="addition">Addition</string>
     <string name="subtraction">Subtraction</string>
+    <string name="multiplication">Multiplication</string>
+    <string name="division">Division</string>
     <string name="no_money">Not enough money</string>
     <string name="buy">Buy</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="fight_default">Answer here</string>
+    <string name="attack">Attack!</string>
+    <string name="defense">Defend!</string>
+    <string name="enemy_hp">Enemy HP: </string>
+    <string name="result_loss">DEFEAT</string>
+    <string name="result_won">VICTORY!</string>
+    <string name="xp_gain">XP Gained: </string>
+    <string name="gold_gain">Gold Gained: </string>
+    <string name="level_gained">You gained a level!</string>
+    <string name="potion_healing">Healing, be quick!</string>
+    <string name="you_healed">You healed for </string>
+    <string name="correct">correct</string>
+    <string name="no_potions">You have no potions.</string>
+    <string name="hit_miss">Miss</string>
+    <string name="hit_glance">Glancing Hit</string>
+    <string name="hit_hit">Hit</string>
+    <string name="hit_crit">Critical Hit!</string>
+    <string name="strong">Strong</string>
+    <string name="weak">Weak</string>
+    <string name="help_no_detail">Detailed Help for that topic is not available.</string>
+    <string name="help_no_info">No information is available for topic: </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello">Hello World, SimpleHelpActivity!</string>
+    <string name="topic_activity_label">Help Topic</string>
+
+    <string name="topic1_name">Hello World, SimpleHelpActivity!</string>
+    <string name="topic1_text">Simple Help</string>
+
 </resources>

@@ -8,7 +8,8 @@
     android:rowCount="4"
     android:alpha="1"
     android:background="@android:color/white"
-    android:layout_weight="10">
+    android:layout_weight="10"
+    android:useDefaultMargins="true">
 
     <TextView
         android:id="@+id/addition_text"
@@ -21,7 +22,7 @@
         tools:layout_editor_absoluteY="658dp" />
 
     <Space
-        android:layout_width="100dp"
+        android:layout_width="30dp"
         android:layout_height="match_parent"/>
 
     <TextView
@@ -62,7 +63,7 @@
         tools:layout_editor_absoluteY="658dp" />
 
     <Space
-        android:layout_width="100dp"
+        android:layout_width="30dp"
         android:layout_height="match_parent"/>
 
     <TextView
@@ -92,15 +93,98 @@
         android:text="+"
         android:id="@+id/sub_inc_button"/>
 
+    <TextView
+        android:id="@+id/multiplication_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/multiplication"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp" />
+
     <Space
-        android:layout_width="0dp"
+        android:layout_width="30dp"
         android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/multiplication_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <TextView
+        android:id="@+id/multiplication_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/mult_inc_button"/>
+
+    <TextView
+        android:id="@+id/division_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/division"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <Space
+        android:layout_width="30dp"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/division_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <TextView
+        android:id="@+id/division_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#253A77"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="658dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/div_inc_button"/>
+
 
     <Button
         android:id="@+id/weapon_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ok" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
 
     <Space
         android:layout_width="0dp"

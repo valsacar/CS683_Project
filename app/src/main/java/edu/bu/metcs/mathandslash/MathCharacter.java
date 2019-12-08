@@ -1,8 +1,9 @@
 package edu.bu.metcs.mathandslash;
 
+import android.graphics.Color;
 import java.io.Serializable;
-
 import static java.lang.Math.max;
+import static java.lang.Math.min;
 import static java.lang.Math.pow;
 import static java.lang.Math.random;
 import static java.lang.Math.round;
@@ -23,15 +24,14 @@ class MathCharacter implements Serializable {
         this.health = 1;
         this.pointsToUse = 2;
         this.money = 0;
-        this.potions = 1;
-        this.weapon = new MathWeapon(1, 0);
-        this.armor = new MathArmor(1, 0);
+        this.potions = 3;
+        this.weapon = new MathWeapon(1, 1);
+        this.armor = new MathArmor(1, 1);
     }
 
     public MathCharacter(int level) {
         this.level = level;
-        this.xp = (this.xpToNext()/2) + (int)(random() * (this.xpToNext()/2));
-        this.hp = this.getMaxHP();
+        this.xp = (this.xpToNext()/4) + (int)(random() * (this.xpToNext()/2));
         this.strength = 1;
         this.toughness = 1;
         this.health = 1;
@@ -46,22 +46,52 @@ class MathCharacter implements Serializable {
             }
         }
 
+        this.hp = this.getMaxHP();
+
         this.pointsToUse = 2;
         this.money = (int)((random() * level * 100) + pow(level, 1.5) + 50);
         this.potions = 1;
 
-        this.weapon = new MathWeapon(1, 0);
-        this.armor = new MathArmor(1, 0);
+        this.weapon = new MathWeapon(1, 1);
+        this.armor = new MathArmor(1, 1);
 
         // Give some random weapon/armor strengths
         int totalPoints = (int)(random() * level * 2) + 1;
         for (int i = totalPoints;i>0;i--) {
-            int choice = (int)(random() * 4);
+            int choice = (int)(random() * 8);
             switch (choice) {
                 case 0: this.weapon.incAdditionLevel(); break;
                 case 1: this.weapon.incSubtractionLevel(); break;
-                case 3: this.armor.incAdditionLevel(); break;
-                case 4: this.armor.incSubtractionLevel(); break;
+                case 2:
+                    if (PreferenceHelper.getCurrentCharacter().getWeapon().getMultLevel() > 0) {
+                        this.weapon.incMultLevel();
+                    } else { // If player doesn't have mult we go addition
+                        this.weapon.incAdditionLevel();
+                    }
+                    break;
+                case 3:
+                    if (PreferenceHelper.getCurrentCharacter().getWeapon().getDivLevel() > 0) {
+                        this.weapon.incDivLevel();
+                    } else {// If player doesn't have div we go sub
+                        this.weapon.incSubtractionLevel();
+                    }
+                    break;
+                case 4: this.armor.incAdditionLevel(); break;
+                case 5: this.armor.incSubtractionLevel(); break;
+                case 6:
+                    if (PreferenceHelper.getCurrentCharacter().getWeapon().getMultLevel() > 0) {
+                        this.armor.incMultLevel();
+                    } else { // If player doesn't have mult we go addition
+                        this.armor.incAdditionLevel();
+                    }
+                    break;
+                case 7:
+                    if (PreferenceHelper.getCurrentCharacter().getWeapon().getDivLevel() > 0) {
+                        this.armor.incDivLevel();
+                    } else {// If player doesn't have div we go sub
+                        this.armor.incSubtractionLevel();
+                    }
+                    break;
             }
         }
 
@@ -127,6 +157,7 @@ class MathCharacter implements Serializable {
 
     protected void modHealth(int amount) {
         this.health += amount;
+        this.fullHeal(); // Full heal when increasing health stat
     }
 
     protected void modPoints(int amount) {
@@ -149,7 +180,7 @@ class MathCharacter implements Serializable {
         this.potions += number;
     }
 
-    public int getPotionCost() {return 500;}
+    public int getPotionCost() {return 250;}
 
     public int spendMoney(int amount) {
         return this.money -= amount;
@@ -161,7 +192,7 @@ class MathCharacter implements Serializable {
 
     private void addLevel() {
         this.level++;
-        this.hp = this.getMaxHP(); // Full heal
+        this.fullHeal(); // Full heal on level
         this.pointsToUse += 2;
         this.xp = 0; //Reset xp... this might be too harsh.
     }
@@ -172,7 +203,6 @@ class MathCharacter implements Serializable {
 
         if (this.hp <= 0) {
             this.hp = 0;
-
             this.xp /= 1.5; //Lose some xp
 
             return true;
@@ -189,6 +219,71 @@ class MathCharacter implements Serializable {
 
     public void fullHeal() {
         this.hp = getMaxHP();
+    }
+
+    public int getHPColor() {
+        double hpPercent = (this.hp / this.getMaxHP()) * 100;
+
+        if (hpPercent >= 75) return Color.GREEN;
+        else if (hpPercent <= 25) return Color.RED;
+
+        return Color.YELLOW;
+    }
+
+    public void doHealing(int amt) {
+        this.hp = min(this.getMaxHP(), hp + amt);
+    }
+
+    public String weakestArmor() {
+        int add = getArmor().getAdditionLevel();
+        int sub = getArmor().getSubtractionLevel();
+        int mult = getArmor().getMultLevel();
+        int div = getArmor().getDivLevel();
+        String retString = MathItem.ADDITION;
+        int lowest = add;
+
+        if (sub < lowest) {
+            lowest = sub;
+            retString = MathItem.SUBTRACTION;
+        }
+
+        if (mult < lowest) {
+            lowest = mult;
+            retString = MathItem.MULTIPLICATION;
+        }
+
+        if (div < lowest) {
+            lowest = div;
+            retString = MathItem.DIVISION;
+        }
+
+        return retString;
+    }
+
+    public String strongestArmor() {
+        int add = getArmor().getAdditionLevel();
+        int sub = getArmor().getSubtractionLevel();
+        int mult = getArmor().getMultLevel();
+        int div = getArmor().getDivLevel();
+        String retString = MathItem.ADDITION;
+        int highest = add;
+
+        if (sub > highest) {
+            highest = sub;
+            retString = MathItem.SUBTRACTION;
+        }
+
+        if (mult > highest) {
+            highest = mult;
+            retString = MathItem.MULTIPLICATION;
+        }
+
+        if (div > highest) {
+            highest = div;
+            retString = MathItem.DIVISION;
+        }
+
+        return retString;
     }
 
 }

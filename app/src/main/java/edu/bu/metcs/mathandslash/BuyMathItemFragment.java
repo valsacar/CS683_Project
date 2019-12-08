@@ -59,7 +59,7 @@ public class BuyMathItemFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                int cost = item.nextLevelCost("+");
+                int cost = item.nextLevelCost(MathItem.ADDITION);
 
                 if (cost > money) {
                     Toast.makeText(getActivity(), R.string.no_money, Toast.LENGTH_SHORT).show();
@@ -68,7 +68,7 @@ public class BuyMathItemFragment extends Fragment {
                     item.incAdditionLevel();
 
                     updateTextView(R.id.addition_stats, String.valueOf(item.getAdditionLevel()));
-                    updateTextView(R.id.addition_cost, item.nextLevelCost("+") + "GP");
+                    updateTextView(R.id.addition_cost, item.nextLevelCost(MathItem.ADDITION) + "GP");
                     ((ViewShopActivity)getActivity()).updateTextView(R.id.money, money + "GP");
                 }
             }
@@ -80,7 +80,7 @@ public class BuyMathItemFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                int cost = item.nextLevelCost("+");
+                int cost = item.nextLevelCost(MathItem.SUBTRACTION);
 
                 if (cost > money) {
                     Toast.makeText(getActivity(), R.string.no_money, Toast.LENGTH_SHORT).show();
@@ -89,7 +89,49 @@ public class BuyMathItemFragment extends Fragment {
                     item.incSubtractionLevel();
 
                     updateTextView(R.id.subtraction_stats, String.valueOf(item.getSubtractionLevel()));
-                    updateTextView(R.id.subtraction_cost, item.nextLevelCost("+") + "GP");
+                    updateTextView(R.id.subtraction_cost, item.nextLevelCost(MathItem.SUBTRACTION) + "GP");
+                    ((ViewShopActivity)getActivity()).updateTextView(R.id.money, money + "GP");
+                }
+            }
+        });
+
+        Button multInc = (Button) v.findViewById(R.id.mult_inc_button);
+        multInc.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                int cost = item.nextLevelCost(MathItem.MULTIPLICATION);
+
+                if (cost > money) {
+                    Toast.makeText(getActivity(), R.string.no_money, Toast.LENGTH_SHORT).show();
+                } else {
+                    money -= cost;
+                    item.incMultLevel();
+
+                    updateTextView(R.id.multiplication_stats, String.valueOf(item.getMultLevel()));
+                    updateTextView(R.id.multiplication_cost, item.nextLevelCost(MathItem.MULTIPLICATION) + "GP");
+                    ((ViewShopActivity)getActivity()).updateTextView(R.id.money, money + "GP");
+                }
+            }
+        });
+
+        Button divInc = (Button) v.findViewById(R.id.div_inc_button);
+        divInc.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                int cost = item.nextLevelCost(MathItem.DIVISION);
+
+                if (cost > money) {
+                    Toast.makeText(getActivity(), R.string.no_money, Toast.LENGTH_SHORT).show();
+                } else {
+                    money -= cost;
+                    item.incDivLevel();
+
+                    updateTextView(R.id.division_stats, String.valueOf(item.getDivLevel()));
+                    updateTextView(R.id.division_cost, item.nextLevelCost(MathItem.DIVISION) + "GP");
                     ((ViewShopActivity)getActivity()).updateTextView(R.id.money, money + "GP");
                 }
             }
@@ -101,9 +143,13 @@ public class BuyMathItemFragment extends Fragment {
     public void resetText() {
         updateTextView(R.id.addition_stats, String.valueOf(item.getAdditionLevel()));
         updateTextView(R.id.subtraction_stats, String.valueOf(item.getSubtractionLevel()));
+        updateTextView(R.id.division_stats, String.valueOf(item.getDivLevel()));
+        updateTextView(R.id.multiplication_stats, String.valueOf(item.getMultLevel()));
 
-        updateTextView(R.id.addition_cost, item.nextLevelCost("+") + "GP");
-        updateTextView(R.id.subtraction_cost, item.nextLevelCost("-") + "GP");
+        updateTextView(R.id.addition_cost, item.nextLevelCost(MathItem.ADDITION) + "GP");
+        updateTextView(R.id.subtraction_cost, item.nextLevelCost(MathItem.SUBTRACTION) + "GP");
+        updateTextView(R.id.division_cost, item.nextLevelCost(MathItem.DIVISION) + "GP");
+        updateTextView(R.id.multiplication_cost, item.nextLevelCost(MathItem.MULTIPLICATION) + "GP");
     }
 
 

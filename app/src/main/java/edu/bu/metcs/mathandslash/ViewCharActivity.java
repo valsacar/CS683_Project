@@ -3,7 +3,6 @@ package edu.bu.metcs.mathandslash;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -45,7 +44,6 @@ public class ViewCharActivity extends AppCompatActivity {
 
         origTough = this.player.getToughness();
         updateTextView(R.id.charTough, origTough);
-
     }
 
     private void updateTextView(int id, int update) {

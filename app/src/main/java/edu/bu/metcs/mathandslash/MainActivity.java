@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Currently only intend to have 1 saved character, but this will make it easier to change that later
         this.player = PreferenceHelper.loadCharacter("player1");
-        this.player.setMoney(1000);
     }
 
     public void onClickChar(View view) {
@@ -35,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickFight(View view) {
         Intent intent = new Intent(this, MathFightActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickHelp(View view) {
+        Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
 
